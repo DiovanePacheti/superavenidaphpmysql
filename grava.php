@@ -52,7 +52,7 @@
     $marca = $_POST["marca"];
     $quant = $_POST["quant"];
     $preco = $_POST["preco"];
-    $foto = $_FILES["foto"];
+    $foto = $_FILES["foto"]["tmp_name"];
 
     echo "<h4>Produto a ser inserido no estoque</h4>";
     echo "<h5>Produto: $nome</h5>";
