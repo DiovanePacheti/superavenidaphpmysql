@@ -54,6 +54,7 @@
           <th>Marca</th>
           <th>Quant.</th>
           <th>Preço R$</th>
+          <th>Foto</th>
           <th>Ações</th>
         </tr>
       </thead>
@@ -88,6 +89,7 @@ if ($result->num_rows > 0) {
       echo "<td>$marca</td>";
       echo "<td>$quant</td>";
       echo "<td>$preco</td>";
+      echo "<td><img src='fotos/' . $id . ".jpg' width='100' height='80'></td>";
       echo "<td><a href='altera.php?id=$id' class='btn btn-warning'><i class='fas fa-edit'></i> </a>
       <a href='exclui.php?id=$id' class='btn btn-danger'
       onclick='return confirm(\"confirma exclusão de $nome?\")'><i class='far fa-trash-alt'></i></a></td></tr>";

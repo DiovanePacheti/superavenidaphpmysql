@@ -45,14 +45,26 @@
   <div class="container mt-3">
     <h3>Cadastro de Produtos</h3>
     <hr>
-    <form method="post" action="grava.php">
+    <form method="post" action="grava.php" enctype="multipart/form-data" >
       <div class="form-group">
         <label for="nome">Nome do Produto:</label>
         <input type="text" class="form-control" id="nome" name="nome" autofocus required>
       </div>
-      <div class="form-group">
-        <label for="marca">Marca:</label>
-        <input type="text" class="form-control" id="marca" name="marca" required>
+
+
+      <div class="row">
+        <div class="col-sm-6">
+        <div class="form-group">
+          <label for="marca">Marca:</label>
+          <input type="text" class="form-control" id="marca" name="marca" required>
+        </div>
+        </div>  
+        <div class="col-sm-6">
+        <div class="form-group">
+          <label for="foto">Foto do produto:</label>
+          <input type="file" class="form-control" id="foto" name="foto" required>
+        </div>
+        </div>  
       </div>
       <div class="row">
         <div class="col-sm-6">

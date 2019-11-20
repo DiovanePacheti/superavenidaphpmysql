@@ -41,13 +41,52 @@
       </div>
     </div>
   </nav>
+  <?php
+    // define as configurações de conexão com o banco de dados
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "estoque_manha_2019";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    //comando SQL para 
+    $sql = "SELECT COUNT(*) AS num FROM estoque ";
+    //
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_assoc($result);
+
+    $num = $row['num'];
+
+    $sql = "SELECT AVG(preco) AS media FROM estoque ";
+    //
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_assoc($result);
+
+    $media = $row['media'];
+
+    $sql = "SELECT SUM(quant*preco) AS total FROM estoque ";
+    //
+    $result = mysqli_query($conn, $sql);
+
+    $row = mysqli_fetch_assoc($result);
+
+    $total = $row['total'];
+    
+    
+  ?>
   <div class="container mt-3">
     <h3>Balanço - Controle de Estoque</h3>
     <hr>
-    <h4> Nº de Itens Cadastrados: </h4>
-    <h4> Preço Médio dos Produtos R$: </h4>
-    <h4> Total em Estoque R$: </h4>
+    <h4> Nº de Itens Cadastrados: <?=$num?></h4>
+    <h4> Preço Médio dos Produtos R$:<?= number_format($media,2,',','.')?> </h4>
+    <h4> Total em Estoque R$: <?= number_format($total,2,',','.')?></h4>
   </div>
 
 </body>

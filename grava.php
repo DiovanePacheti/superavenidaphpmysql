@@ -52,6 +52,7 @@
     $marca = $_POST["marca"];
     $quant = $_POST["quant"];
     $preco = $_POST["preco"];
+    $foto = $_FILES["foto"];
 
     echo "<h4>Produto a ser inserido no estoque</h4>";
     echo "<h5>Produto: $nome</h5>";
@@ -76,7 +77,16 @@
             VALUES ('$nome', '$marca', $quant, $preco)";
 
     if ($conn->query($sql) === TRUE) {
+
+      //Obtem o id do registro 
+      $id = mysqli_insert_id($conn);
+
+      $destino = "fotos/" . $id . ".jpg";
+
+      move_uploaded_file($foto, $destino);
+      
       echo "<h5 style='color: blue'>Ok! Produto cadastrado com sucesso</h5>";
+
     } else {
       echo "Erro: " . $sql . "<br>" . $conn->error;
     }
